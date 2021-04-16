@@ -8,7 +8,6 @@ const port = 3000
      * Connection URI. Update <username>, <password>, and <your-cluster-url> to reflect your cluster.
      * See https://docs.mongodb.com/ecosystem/drivers/node/ for more details
      */
-const connectionString = "mongodb+srv://OrelCohen:123456Oo@cluster0.ac0qq.mongodb.net/Duty-System?retryWrites=true&w=majority";
 MongoClient.connect(connectionString, { useUnifiedTopology: true })
     .then(client => {
         console.log('Connected to Database')
