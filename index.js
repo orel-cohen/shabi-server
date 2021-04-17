@@ -1,3 +1,4 @@
+// import { connectionStr } from './src/config/ConnectionString';
 const express = require('express')
 const { MongoClient } = require('mongodb');
 const users = require('./src/users');
@@ -8,7 +9,8 @@ const port = 3000
      * Connection URI. Update <username>, <password>, and <your-cluster-url> to reflect your cluster.
      * See https://docs.mongodb.com/ecosystem/drivers/node/ for more details
      */
-MongoClient.connect(connectionString, { useUnifiedTopology: true })
+const conn = "test";
+MongoClient.connect(conn, { useUnifiedTopology: true })
     .then(client => {
         console.log('Connected to Database')
         const db = client.db('Shabtai')
@@ -16,9 +18,9 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
         // app.use(/* ... */)
         // app.get(/* ... */)
         // app.post(/* ... */)
-        app.listen(port, () => {
-            console.log(`Example app listening at http://localhost:${port}`)
-        })
+        // app.listen(port, () => {
+        //     console.log(`Example app listening at http://localhost:${port}`)
+        // })
     }).catch((e) => {
         console.log(e);
     }) 
