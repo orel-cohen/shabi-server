@@ -1,33 +1,21 @@
 const express = require('express')
-let bodyParser = require('body-parser');
 const { MongoClient } = require('mongodb');
+
 const connectionStr = require('./src/config/ConnectionString');
 const users = require('./src/users');
-const url = require('url');
 let User = require('./src/classes/user');
 let Rank = require('./src/classes/Rank');
 const app = express()
 const port = 4000
 
-console.log();
-
-
-
-/**
-     * Connection URI. Update <username>, <password>, and <your-cluster-url> to reflect your cluster.
-     * See https://docs.mongodb.com/ecosystem/drivers/node/ for more details
-     */
-const conn = connectionStr;
-
-
 
 app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
+    console.log(`Shabi server listening at port:${port}`)
 })
 
-
+// Routes
 app.post("/setNewUser/", async (req, res) => {
-    MongoClient.connect(conn, { useUnifiedTopology: true })
+    MongoClient.connect(connectionStr, { useUnifiedTopology: true })
         .then(client => {
             let isSuccess = false;
             let testUser = new User();
