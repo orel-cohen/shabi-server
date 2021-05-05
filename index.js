@@ -1,12 +1,26 @@
 const express = require('express')
+const app = express()
+
+app.set('view-engine', 'ejs')
 const { MongoClient } = require('mongodb');
 
-const connectionStr = require('./src/config/ConnectionString');
+const connectionStr = require('./src/config/config');
 const users = require('./src/users');
 let User = require('./src/classes/user');
 let Rank = require('./src/classes/Rank');
-const app = express()
 const port = 4000
+
+app.get("/", (req, res) => {
+    res.render('index.ejs', { name: 'Orel'});
+})
+
+app.get("/login", (req, res) => {
+    res.render('login.ejs');
+})
+
+app.get("/register", (req, res) => {
+    res.render('register.ejs');
+})
 
 
 app.listen(port, () => {
