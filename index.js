@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 
-app.set('view-engine', 'ejs')
+app.set('view-engine', 'ejs');
 const { MongoClient } = require('mongodb');
 
 const connectionStr = require('./src/config/config');
