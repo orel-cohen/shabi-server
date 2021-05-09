@@ -27,7 +27,17 @@ app.listen(port, () => {
 })
 
 app.post("/login", (req, res) => {
-    
+    console.log("in login");
+    MongoClient.connect(connectionStr, { useUnifiedTopology: true})
+    .then(client => {
+        let exist = login.isUserExist(client, req.header);
+        res.send(exist); // 1 or 0
+        // if(isExist) {
+        //     // need to check if pass correct
+        //     return isExist
+        // }
+        // return isExist;
+    })
 })
 
 
